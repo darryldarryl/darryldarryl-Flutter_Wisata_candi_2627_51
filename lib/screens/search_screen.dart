@@ -41,6 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //todo 1
       appBar: AppBar(
         title: const Text('Pencarian Candi'),
         backgroundColor: Colors.deepPurple[50],
