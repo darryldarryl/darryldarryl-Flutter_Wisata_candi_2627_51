@@ -11,20 +11,19 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_wisata_candi_2627_51/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Search screen lists and filters temples', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Pencarian Candi'), findsOneWidget);
+    expect(find.text('Candi Borobudur'), findsOneWidget);
+    expect(find.text('Candi Mendut'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await tester.enterText(find.byType(TextField), 'prambanan');
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Candi Prambanan'), findsOneWidget);
+    expect(find.text('Candi Borobudur'), findsNothing);
   });
 }
